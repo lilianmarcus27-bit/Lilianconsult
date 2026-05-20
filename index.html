@@ -59,6 +59,9 @@
 
     /* Stagger helpers */
     .s1{animation-delay:.05s}.s2{animation-delay:.15s}.s3{animation-delay:.28s}
+    /* Bulle numéro : flash orange à l'entrée */
+    /* Services : espace entre cartes sur mobile */
+    @media(max-width:767px){ .services-grid{ gap:40px !important; } }
     .s4{animation-delay:.42s}.s5{animation-delay:.58s}
 
     /* Animated border on active nav */
@@ -486,13 +489,8 @@ function HeroDashboard() {
                 <a href="#contact" onClick={e => goTo('contact', e)} className="btn-p" style={{ padding:'15px 30px', fontSize:'1rem' }}>
                   Je veux un appel &nbsp;→
                 </a>
-<<<<<<< HEAD
-                <a href="#services" onClick={e => goTo('services', e)} className="btn-s" style={{ padding:'15px 30px', fontSize:'1rem' }}>
-                  Découvrir les offres
-=======
                 <a href="#apropos" onClick={e => goTo('apropos', e)} className="btn-s" style={{ padding:'15px 30px', fontSize:'1rem' }}>
                   Qui suis-je ?
->>>>>>> b25ac97 (première connexion)
                 </a>
               </div>
 
@@ -610,7 +608,7 @@ function HeroDashboard() {
             {/* Cards */}
             <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(280px,1fr))', gap:24, marginBottom:56 }}>
               {cards.map((c,i) => (
-                <div key={i} className={`card rv d${i+1} ${seen?'on':''}`}
+                <div key={i} className={`card rv d${i+1}`}
                   style={{ padding:'36px 32px', borderRadius:20,
                     background:'var(--gray-soft)', border:'1px solid rgba(11,29,57,.06)' }}>
                   <div style={{ width:56, height:56, borderRadius:16,
@@ -627,7 +625,7 @@ function HeroDashboard() {
             </div>
 
             {/* Closing statement */}
-            <div className={`rv d4 ${seen?'on':''}`} style={{ textAlign:'center' }}>
+            <div className="rv" style={{ textAlign:'center' }}>
               <div style={{ display:'inline-block', padding:'24px 40px', borderRadius:18,
                 background:'var(--navy)', maxWidth:680 }}>
                 <p style={{ fontSize:'1.2rem', fontWeight:700, color:'#fff', lineHeight:1.6 }}>
@@ -669,16 +667,15 @@ function HeroDashboard() {
       ];
 
       return (
-        <section id="methode" style={{ padding:'96px 0', background:'var(--gray-soft)' }} ref={ref}>
+        <section id="methode" style={{ padding:'96px 0', background:'var(--navy)' }} ref={ref}>
           <div style={{ maxWidth:1200, margin:'0 auto', padding:'0 28px' }}>
 
             <div className={`rv ${seen?'on':''}`} style={{ textAlign:'center', marginBottom:72 }}>
               <div style={{ display:'inline-flex', alignItems:'center', gap:8, padding:'7px 18px',
-                borderRadius:99, background:'rgba(11,29,57,.07)', border:'1px solid rgba(11,29,57,.1)', marginBottom:20 }}>
-                <span style={{ fontSize:'.78rem', fontWeight:700, color:'var(--navy)' }}>La méthode</span> <span style={{ color:'var(--orange)' }}>LN</span>
-
+                borderRadius:99, background:'rgba(255,255,255,.08)', border:'1px solid rgba(255,255,255,.15)', marginBottom:20 }}>
+                <span style={{ fontSize:'.78rem', fontWeight:700, color:'rgba(255,255,255,.8)' }}>La méthode</span> <span style={{ color:'var(--orange)' }}>LN</span>
               </div>
-              <h2 style={{ fontSize:'clamp(2rem,5vw,3rem)', fontWeight:900, color:'var(--navy)',
+              <h2 style={{ fontSize:'clamp(2rem,5vw,3rem)', fontWeight:900, color:'#fff',
                 letterSpacing:'-1px', lineHeight:1.1 }}>
                 Une méthode simple<br />et efficace
               </h2>
@@ -686,14 +683,14 @@ function HeroDashboard() {
 
             <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(280px,1fr))', gap:24 }}>
               {steps.map((s,i) => (
-                <div key={i} className={`card rv d${i+1} ${seen?'on':''}`}
+                <div key={i} className={`card rv d${i+1}`}
                   onMouseEnter={() => setHovered(i)}
                   onMouseLeave={() => setHovered(null)}
                   style={{ background:'#fff', borderRadius:20, padding:'36px 32px',
                     border:'1px solid rgba(11,29,57,.06)', position:'relative' }}>
 
                   {/* Number bubble */}
-                  <div style={{ display:'inline-flex', width:56, height:56, borderRadius:16,
+                  <div className="num-bubble" style={{ display:'inline-flex', width:56, height:56, borderRadius:16,
                     background: hovered===i ? 'var(--orange)' : 'var(--navy)',
                     alignItems:'center', justifyContent:'center',
                     marginBottom:24, fontWeight:900, fontSize:'1.1rem', color:'#fff',
@@ -717,7 +714,7 @@ function HeroDashboard() {
                   {i < 2 && (
                     <div className="step-arrow" style={{
                       position:'absolute', right:-16, top:'50%', transform:'translateY(-50%) translateX(50%)',
-                      zIndex:5, background:'var(--gray-soft)', padding:'4px 2px', borderRadius:6,
+                      zIndex:5, background:'var(--navy)', padding:'4px 2px', borderRadius:6,
                     }}>
                       <svg width="20" height="20" fill="none" stroke="var(--orange)" strokeWidth="2.5" strokeLinecap="round">
                         <path d="M5 10h10M11 5l5 5-5 5"/>
@@ -799,7 +796,7 @@ function HeroDashboard() {
               </h2>
             </div>
 
-            <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(280px,1fr))', gap:24, alignItems:'center' }}>
+            <div className="services-grid" style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(280px,1fr))', gap:24, alignItems:'center' }}>
               {services.map((s,i) => (
                 <div key={i}
                   className={`rv-price pd${i} ${seen?'on':''} ${s.feat?'feat-card feat-glow':''}`}
@@ -878,8 +875,6 @@ function HeroDashboard() {
     function AboutSection() {
       const [ref, seen] = useInView();
 
-      const skills = ['Marketing Digital','Stratégie de contenu','Réseaux sociaux','Site web','Création','Funnel de vente'];
-
       return (
         <section id="apropos" style={{ padding:'96px 0', background:'var(--navy)' }} ref={ref}>
           <div style={{ maxWidth:1200, margin:'0 auto', padding:'0 28px',
@@ -909,17 +904,6 @@ function HeroDashboard() {
 Chaque action doit avoir un objectif précis : gagner en visibilité, renforcer la crédibilité et générer des opportunités business.
 
               </p>
-
-              {/* Skill tags */}
-              <div style={{ display:'flex', flexWrap:'wrap', gap:10, marginBottom:36 }}>
-                {skills.map(sk => (
-                  <span key={sk} style={{ padding:'8px 16px', borderRadius:99,
-                    background:'rgba(255,255,255,.07)', color:'rgba(255,255,255,.7)',
-                    border:'1px solid rgba(255,255,255,.1)', fontSize:'.82rem', fontWeight:500 }}>
-                    {sk}
-                  </span>
-                ))}
-              </div>
 
               <a href="#contact" onClick={e => goTo('contact', e)} className="btn-p" style={{ padding:'14px 28px', fontSize:'.95rem' }}>
                 Réserver un appel →
@@ -983,7 +967,7 @@ Chaque action doit avoir un objectif précis : gagner en visibilité, renforcer 
       ];
 
       return (
-        <section id="temoignages" style={{ padding:'96px 0', background:'var(--navy)' }} ref={ref}>
+        <section id="temoignages" style={{ padding:'48px 0 96px 0', background:'var(--navy)' }} ref={ref}>
           <div style={{ maxWidth:1200, margin:'0 auto', padding:'0 28px' }}>
 
             {/* Header */}
