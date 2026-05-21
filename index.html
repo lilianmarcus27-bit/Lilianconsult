@@ -647,6 +647,17 @@ function HeroDashboard() {
     function ProcessSection() {
       const [ref, seen] = useInView();
       const [hovered, setHovered] = React.useState(null);
+      const [litBubbles, setLitBubbles] = React.useState([]);
+
+      React.useEffect(() => {
+        if (!seen) return;
+        [0, 1, 2].forEach(i => {
+          setTimeout(() => {
+            setLitBubbles(prev => [...prev, i]);
+            setTimeout(() => setLitBubbles(prev => prev.filter(x => x !== i)), 700);
+          }, i * 350);
+        });
+      }, [seen]);
 
       const steps = [
         {
@@ -691,7 +702,7 @@ function HeroDashboard() {
 
                   {/* Number bubble */}
                   <div className="num-bubble" style={{ display:'inline-flex', width:56, height:56, borderRadius:16,
-                    background: hovered===i ? 'var(--orange)' : 'var(--navy)',
+                    background: (hovered===i || litBubbles.includes(i)) ? 'var(--orange)' : 'var(--navy)',
                     alignItems:'center', justifyContent:'center',
                     marginBottom:24, fontWeight:900, fontSize:'1.1rem', color:'#fff',
                     transition:'background 0.3s ease, box-shadow 0.3s ease',
