@@ -486,7 +486,7 @@ function HeroDashboard() {
               </p>
 
               {/* CTAs */}
-              <div style={{ display:'flex', flexWrap:'wrap', gap:14, marginBottom:44 }}>
+              <div className="hero-ctas" style={{ display:'flex', flexWrap:'wrap', gap:14, marginBottom:44 }}>
                 <a href="#contact" onClick={e => goTo('contact', e)} className="btn-p" style={{ padding:'15px 30px', fontSize:'1rem' }}>
                   Je veux un appel &nbsp;→
                 </a>
@@ -499,7 +499,7 @@ function HeroDashboard() {
               <div className="trustbar-desktop"><TrustBar /></div>
 
               {/* Bloc mobile : photo à gauche + stats à droite */}
-              <div className="hero-mobile-row" style={{ display:'none', alignItems:'center', gap:12, marginTop:8 }}>
+              <div className="hero-mobile-row" style={{ display:'none', alignItems:'center', gap:12, marginTop:0 }}>
                 {/* Photo + légende */}
                 <div style={{ display:'flex', flexDirection:'column', alignItems:'center', gap:10, flexShrink:0 }}>
                   <div style={{ width:165, height:165, borderRadius:'50%', overflow:'hidden', flexShrink:0 }}>
@@ -601,6 +601,7 @@ function HeroDashboard() {
               .trustbar-desktop{display:none!important;}
               .trustbar-mobile{display:none!important;}
               .hero-mobile-row{display:flex!important;}
+              .hero-ctas{margin-bottom:16px!important;}
             }
           `}</style>
         </section>
