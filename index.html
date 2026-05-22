@@ -544,13 +544,8 @@ function HeroDashboard() {
               </div>
               {/* Légende mobile */}
               <div className="hero-caption" style={{ display:'none', textAlign:'center', marginTop:14 }}>
-                <div style={{ display:'inline-flex', alignItems:'center', gap:8, padding:'8px 16px',
-                  borderRadius:99, background:'rgba(255,255,255,.08)', border:'1px solid rgba(255,255,255,.14)' }}>
-                  <span style={{ fontSize:'1.1rem' }}>👋</span>
-                  <span style={{ fontSize:'.85rem', color:'rgba(255,255,255,.75)', fontWeight:500 }}>
-                    Salut, moi c'est <strong style={{ color:'#fff' }}>Lilian</strong>, consultant digital
-                  </span>
-                </div>
+                <div style={{ fontSize:'1.1rem', fontWeight:800, color:'#fff' }}>Lilian</div>
+                <div style={{ fontSize:'.8rem', color:'var(--orange)', fontWeight:600, marginTop:3 }}>Consultant digital</div>
               </div>
             </div>
           </div>
@@ -564,8 +559,8 @@ function HeroDashboard() {
             }
             @media(max-width:899px){
               .hero-dash{display:flex!important; flex-direction:column; align-items:center; gap:0; margin-top:-16px;}
-              .hero-dash .float-slow{max-width:160px!important; width:160px!important; height:160px!important; border-radius:50%!important; overflow:hidden!important;}
-              .hero-dash .float-slow img{width:100%!important; height:100%!important; object-fit:cover!important; object-position:center 12%!important; max-height:none!important; border-radius:0!important; box-shadow:none!important; border:none!important;}
+              .hero-dash .float-slow{max-width:220px!important; width:220px!important; height:220px!important; border-radius:50%!important; overflow:hidden!important;}
+              .hero-dash .float-slow img{width:100%!important; height:100%!important; object-fit:cover!important; object-position:center 5%!important; max-height:none!important; border-radius:0!important; box-shadow:none!important; border:none!important;}
               .hero-frame{display:none!important;}
               .pop-in{display:none!important;}
               .hero-caption{display:block!important;}
