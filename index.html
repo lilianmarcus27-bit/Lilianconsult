@@ -545,12 +545,7 @@ function HeroDashboard() {
             </div>
           </div>
 
-          {/* Wave */}
-          <div style={{ position:'absolute', bottom:0, left:0, right:0, lineHeight:0 }}>
-            <svg viewBox="0 0 1440 72" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style={{ display:'block', width:'100%' }}>
-              <path d="M0 72L1440 72L1440 24C1200 72 960 72 720 60C480 48 240 0 0 24Z" fill="white"/>
-            </svg>
-          </div>
+
 
           <style>{`
             @media(min-width:900px){
@@ -648,7 +643,11 @@ function HeroDashboard() {
       const [ref, seen] = useInView();
       const [hovered, setHovered] = React.useState(null);
       const [litBubbles, setLitBubbles] = React.useState([]);
+      const [mobileLitCards, setMobileLitCards] = React.useState([]);
+      const [visibleCards, setVisibleCards] = React.useState([]);
+      const cardRefs = [React.useRef(null), React.useRef(null), React.useRef(null)];
 
+      // Desktop : flash orange au scroll, puis retour
       React.useEffect(() => {
         if (!seen) return;
         [0, 1, 2].forEach(i => {
@@ -658,6 +657,22 @@ function HeroDashboard() {
           }, i * 350);
         });
       }, [seen]);
+
+      // Mobile : chaque carte s'allume individuellement au scroll
+      React.useEffect(() => {
+        const observers = cardRefs.map((cardRef, i) => {
+          const obs = new IntersectionObserver(([entry]) => {
+            if (entry.isIntersecting) {
+              setVisibleCards(prev => prev.includes(i) ? prev : [...prev, i]);
+              setMobileLitCards(prev => prev.includes(i) ? prev : [...prev, i]);
+              obs.disconnect();
+            }
+          }, { threshold: 0.4 });
+          if (cardRef.current) obs.observe(cardRef.current);
+          return obs;
+        });
+        return () => observers.forEach(obs => obs.disconnect());
+      }, []);
 
       const steps = [
         {
@@ -678,10 +693,11 @@ function HeroDashboard() {
       ];
 
       return (
-        <section id="methode" style={{ padding:'96px 0', background:'var(--navy)' }} ref={ref}>
-          <div style={{ maxWidth:1200, margin:'0 auto', padding:'0 28px' }}>
+        <section id="methode" style={{ padding:'96px 0 120px', background:'var(--navy)' }} ref={ref}>
+          <div style={{ maxWidth:1100, margin:'0 auto', padding:'0 28px' }}>
 
-            <div className={`rv ${seen?'on':''}`} style={{ textAlign:'center', marginBottom:72 }}>
+            {/* Header */}
+            <div className={`rv ${seen?'on':''}`} style={{ textAlign:'center', marginBottom:80 }}>
               <div style={{ display:'inline-flex', alignItems:'center', gap:8, padding:'7px 18px',
                 borderRadius:99, background:'rgba(255,255,255,.08)', border:'1px solid rgba(255,255,255,.15)', marginBottom:20 }}>
                 <span style={{ fontSize:'.78rem', fontWeight:700, color:'rgba(255,255,255,.8)' }}>La méthode</span> <span style={{ color:'var(--orange)' }}>LN</span>
@@ -692,51 +708,122 @@ function HeroDashboard() {
               </h2>
             </div>
 
-            <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(280px,1fr))', gap:24 }}>
-              {steps.map((s,i) => (
-                <div key={i} className={`card rv d${i+1}`}
-                  onMouseEnter={() => setHovered(i)}
-                  onMouseLeave={() => setHovered(null)}
-                  style={{ background:'#fff', borderRadius:20, padding:'36px 32px',
-                    border:'1px solid rgba(11,29,57,.06)', position:'relative' }}>
+            {/* Timeline desktop */}
+            <div className="roadmap-desktop">
+              {/* Ligne horizontale */}
+              <div style={{ position:'relative' }}>
 
-                  {/* Number bubble */}
-                  <div className="num-bubble" style={{ display:'inline-flex', width:56, height:56, borderRadius:16,
-                    background: (hovered===i || litBubbles.includes(i)) ? 'var(--orange)' : 'var(--navy)',
-                    alignItems:'center', justifyContent:'center',
-                    marginBottom:24, fontWeight:900, fontSize:'1.1rem', color:'#fff',
-                    transition:'background 0.3s ease, box-shadow 0.3s ease',
-                    boxShadow: hovered===i ? '0 0 0 4px rgba(255,122,0,0.2)' : 'none',
-                  }}>
-                    {s.n}
-                  </div>
+                {/* Trait de connexion */}
+                <div style={{ position:'absolute', top:14, left:'16.66%', right:'16.66%',
+                  height:2, background:'rgba(255,255,255,.15)', zIndex:0 }}>
+                  <div className={`rv ${seen?'on':''}`} style={{ height:'100%',
+                    background:'var(--orange)', opacity:.5,
+                    transition:'width 1.2s ease', width: seen ? '100%' : '0%' }} />
+                </div>
 
-                  {/* Icon */}
-                  <div style={{ width:44, height:44, borderRadius:12,
-                    background:'rgba(255,122,0,.08)', color:'var(--orange)',
-                    display:'flex', alignItems:'center', justifyContent:'center', marginBottom:18 }}>
-                    {s.icon}
-                  </div>
+                {/* Grid pour hauteurs égales */}
+                <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr 1fr', gap:32, alignItems:'stretch' }}>
+                {steps.map((s,i) => (
+                  <div key={i} className={`rv d${i+1}`}
+                    style={{ display:'flex', flexDirection:'column', alignItems:'center',
+                      position:'relative', zIndex:1 }}>
 
-                  <h3 style={{ fontSize:'1.4rem', fontWeight:900, color:'var(--navy)', marginBottom:10 }}>{s.title}</h3>
-                  <p style={{ fontSize:'.9rem', color:'#6B7280', lineHeight:1.7 }}>{s.desc}</p>
-
-                  {/* Connector arrow (only for 1st and 2nd on desktop) */}
-                  {i < 2 && (
-                    <div className="step-arrow" style={{
-                      position:'absolute', right:-16, top:'50%', transform:'translateY(-50%) translateX(50%)',
-                      zIndex:5, background:'var(--navy)', padding:'4px 2px', borderRadius:6,
-                    }}>
-                      <svg width="20" height="20" fill="none" stroke="var(--orange)" strokeWidth="2.5" strokeLinecap="round">
-                        <path d="M5 10h10M11 5l5 5-5 5"/>
-                      </svg>
+                    {/* Dot */}
+                    <div onMouseEnter={() => setHovered(i)} onMouseLeave={() => setHovered(null)}
+                      style={{ width:28, height:28, borderRadius:'50%', marginBottom:28, flexShrink:0,
+                        background: (hovered===i || litBubbles.includes(i)) ? 'var(--orange)' : 'rgba(255,255,255,.15)',
+                        border: `3px solid ${(hovered===i || litBubbles.includes(i)) ? 'var(--orange)' : 'rgba(255,255,255,.3)'}`,
+                        transition:'background .3s ease, border-color .3s ease, transform .3s ease',
+                        transform: hovered===i ? 'scale(1.25)' : 'scale(1)',
+                        display:'flex', alignItems:'center', justifyContent:'center',
+                        boxShadow: (hovered===i || litBubbles.includes(i)) ? '0 0 0 6px rgba(255,122,0,.2)' : 'none',
+                      }}>
+                      <div style={{ width:8, height:8, borderRadius:'50%',
+                        background: (hovered===i || litBubbles.includes(i)) ? '#fff' : 'rgba(255,255,255,.5)' }} />
                     </div>
-                  )}
+
+                    {/* Badge numéro */}
+                    <div style={{ marginBottom:12, padding:'4px 14px', borderRadius:99, flexShrink:0,
+                      background: (hovered===i || litBubbles.includes(i)) ? 'var(--orange)' : 'rgba(255,255,255,.1)',
+                      border: `1px solid ${(hovered===i || litBubbles.includes(i)) ? 'var(--orange)' : 'rgba(255,255,255,.2)'}`,
+                      transition:'background .3s ease, border-color .3s ease',
+                      fontSize:'.75rem', fontWeight:800, color:'#fff' }}>
+                      {s.n}
+                    </div>
+
+                    {/* Card — flex:1 pour remplir la hauteur restante */}
+                    <div onMouseEnter={() => setHovered(i)} onMouseLeave={() => setHovered(null)}
+                      style={{ background:'var(--gray-soft)', borderRadius:20, padding:'36px 32px',
+                        width:'100%', textAlign:'left', cursor:'default', flex:1,
+                        border:'1px solid rgba(11,29,57,.06)',
+                        boxShadow: hovered===i ? '0 12px 40px rgba(0,0,0,.3)' : 'none',
+                        transform: hovered===i ? 'translateY(-6px)' : 'translateY(0)',
+                        transition:'transform .3s ease, box-shadow .3s ease' }}>
+                      <h3 style={{ fontSize:'1.1rem', fontWeight:800, color:'var(--navy)', marginBottom:10, lineHeight:1.3 }}>{s.title}</h3>
+                      <p style={{ fontSize:'.9rem', color:'#6B7280', lineHeight:1.7 }}>{s.desc}</p>
+                    </div>
+                  </div>
+                ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Timeline mobile : vertical */}
+            <div className="roadmap-mobile">
+              {steps.map((s,i) => (
+                <div key={i} ref={cardRefs[i]}
+                  className={`mobile-card-wrap${visibleCards.includes(i) ? ' mobile-visible' : ''}`}
+                  style={{ display:'flex', gap:20, position:'relative' }}>
+
+                  {/* Colonne gauche : dot + ligne */}
+                  <div style={{ display:'flex', flexDirection:'column', alignItems:'center', flexShrink:0 }}>
+                    <div style={{ width:28, height:28, borderRadius:'50%', flexShrink:0,
+                      background: mobileLitCards.includes(i) ? 'var(--orange)' : 'rgba(255,255,255,.15)',
+                      border: `3px solid ${mobileLitCards.includes(i) ? 'rgba(255,122,0,.4)' : 'rgba(255,255,255,.25)'}`,
+                      display:'flex', alignItems:'center', justifyContent:'center',
+                      transition:'background .5s ease, border-color .5s ease, box-shadow .5s ease',
+                      boxShadow: mobileLitCards.includes(i) ? '0 0 0 6px rgba(255,122,0,.2)' : 'none' }}>
+                      <div style={{ width:8, height:8, borderRadius:'50%',
+                        background: mobileLitCards.includes(i) ? '#fff' : 'rgba(255,255,255,.4)',
+                        transition:'background .5s ease' }} />
+                    </div>
+                    {i < 2 && <div style={{ width:2, flex:1, minHeight:48,
+                      background:'rgba(255,255,255,.12)', margin:'8px 0' }} />}
+                  </div>
+
+                  {/* Contenu */}
+                  <div className={`rv-mobile-card${mobileLitCards.includes(i) ? ' lit' : ''}`}
+                    style={{ background:'var(--gray-soft)', borderRadius:16, padding:'24px 20px',
+                    flex:1, marginBottom:36, border:'1px solid rgba(255,255,255,.06)',
+                    transform: mobileLitCards.includes(i) ? 'translateY(-3px)' : 'translateY(0)',
+                    transition:'transform .4s ease, box-shadow .4s ease',
+                    boxShadow: mobileLitCards.includes(i) ? '0 10px 32px rgba(0,0,0,.28)' : '0 2px 12px rgba(0,0,0,.12)' }}>
+                    <div style={{ display:'inline-flex', padding:'4px 14px', borderRadius:99,
+                      background: mobileLitCards.includes(i) ? 'var(--orange)' : 'rgba(11,29,57,.12)',
+                      border: `1px solid ${mobileLitCards.includes(i) ? 'var(--orange)' : 'rgba(255,255,255,.12)'}`,
+                      transition:'background .4s ease, border-color .4s ease, color .4s ease',
+                      fontSize:'.75rem', fontWeight:800,
+                      color: mobileLitCards.includes(i) ? '#fff' : 'rgba(255,255,255,.5)',
+                      marginBottom:12 }}>{s.n}</div>
+                    <h3 style={{ fontSize:'1.05rem', fontWeight:900, color:'var(--navy)', marginBottom:8 }}>{s.title}</h3>
+                    <p style={{ fontSize:'.85rem', color:'#6B7280', lineHeight:1.75 }}>{s.desc}</p>
+                  </div>
                 </div>
               ))}
             </div>
           </div>
-          <style>{`@media(max-width:860px){.step-arrow{display:none!important}}`}</style>
+
+          <style>{`
+            .roadmap-desktop { display:block; }
+            .roadmap-mobile  { display:none;  }
+            .rv-mobile-card { opacity:0; transform:translateX(-20px); transition:opacity .55s ease, transform .55s ease, box-shadow .4s ease !important; }
+            .mobile-visible .rv-mobile-card { opacity:1; transform:translateX(0); }
+            .mobile-visible .rv-mobile-card.lit { transform:translateY(-3px) !important; }
+            @media(max-width:700px){
+              .roadmap-desktop { display:none !important; }
+              .roadmap-mobile  { display:block !important; }
+            }
+          `}</style>
         </section>
       );
     }
