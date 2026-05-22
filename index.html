@@ -507,7 +507,7 @@ function HeroDashboard() {
               <div className="float-slow" style={{ position:'relative', width:'100%', maxWidth:440 }}>
 
                                 {/* Cadre décoratif derrière */}
-                <div style={{
+                <div className="hero-frame" style={{
                   position:'absolute', top:20, left:20, right:-20, bottom:-20,
                   borderRadius:24, border:'2px solid rgba(255,122,0,.25)',
                   zIndex:0,
@@ -550,10 +550,12 @@ function HeroDashboard() {
           <style>{`
             @media(min-width:900px){
               .hero-inner{grid-template-columns:1fr 1fr!important}
-              .hero-dash{display:block!important}
+              .hero-dash{display:flex!important}
             }
             @media(max-width:899px){
-              .hero-dash{display:none!important}
+              .hero-dash{display:flex!important; justify-content:center; margin-top:-16px;}
+              .hero-dash .float-slow{max-width:200px!important}
+              .hero-frame{display:none!important}
             }
           `}</style>
         </section>
@@ -1349,14 +1351,14 @@ Chaque action doit avoir un objectif précis : gagner en visibilité, renforcer 
 
           <h3 style={sh3}>Éditeur du site</h3>
           <p style={sp}>Lilian Nelsom<br/>
-          Consultant en marketing digital — Auto-entrepreneur<br/>
-          SIRET : [à compléter]<br/>
-          Adresse : [à compléter]<br/>
+          Consultant digital - Auto-entrepreneur<br/>
+          SIRET : 993 480 789 00011<br/>
+          Adresse : 4 rue du Parc 27000 Évreux<br/>
           Téléphone : 07 63 46 67 43<br/>
-          Email : <a href="mailto:contact@lilianconsult.fr" style={{ color:'var(--orange)' }}>contact@lilianconsult.fr</a></p>
+          Email : <a href="mailto:contact@lilianconsult.fr" style={{ color:'var(--orange)' }}>lilianmarcus27@gmail.com</a></p>
 
           <h3 style={sh3}>Hébergement</h3>
-          <p style={sp}>GitHub Pages — GitHub, Inc.<br/>88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis<br/>
+          <p style={sp}>GitHub Pages - GitHub, Inc.<br/>88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis<br/>
           <a href="https://pages.github.com" target="_blank" rel="noopener noreferrer" style={{ color:'var(--orange)' }}>pages.github.com</a></p>
 
           <h3 style={sh3}>Propriété intellectuelle</h3>
@@ -1375,8 +1377,8 @@ Chaque action doit avoir un objectif précis : gagner en visibilité, renforcer 
           <h2 style={{ fontSize:'1.4rem', fontWeight:900, color:'var(--navy)', marginBottom:24 }}>Politique de confidentialité</h2>
 
           <h3 style={sh3}>Responsable du traitement</h3>
-          <p style={sp}>Lilian Nelsom — Auto-entrepreneur<br/>
-          Contact : <a href="mailto:contact@lilianconsult.fr" style={{ color:'var(--orange)' }}>contact@lilianconsult.fr</a></p>
+          <p style={sp}>Lilian Nelsom - Auto-entrepreneur<br/>
+          Contact : <a href="mailto:contact@lilianconsult.fr" style={{ color:'var(--orange)' }}>lilianmarcus27@gmail.com</a></p>
 
           <h3 style={sh3}>Données collectées</h3>
           <p style={sp}>Via le formulaire de contact, les données suivantes sont collectées :<br/>
@@ -1399,7 +1401,7 @@ Chaque action doit avoir un objectif précis : gagner en visibilité, renforcer 
           — Droit à la limitation du traitement<br/>
           — Droit à la portabilité<br/>
           — Droit d'opposition<br/><br/>
-          Pour exercer ces droits, contactez : <a href="mailto:contact@lilianconsult.fr" style={{ color:'var(--orange)' }}>contact@lilianconsult.fr</a></p>
+          Pour exercer ces droits, contactez : <a href="mailto:contact@lilianconsult.fr" style={{ color:'var(--orange)' }}>lilianmarcus27@gmail.com</a></p>
 
           <h3 style={sh3}>Cookies</h3>
           <p style={sp}>Ce site n'utilise pas de cookies de traçage ou d'analyse. Aucune donnée de navigation n'est collectée à des fins publicitaires.</p>
