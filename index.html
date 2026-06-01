@@ -13,7 +13,7 @@
   <!-- Open Graph (LinkedIn, Facebook, WhatsApp) -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://lilianconsult.fr/" />
-  <meta property="og:title" content="Lilian Nelsom — Consultant Marketing Digital" />
+  <meta property="og:title" content="Lilian Nelsom - Consultant Marketing Digital" />
   <meta property="og:description" content="J'aide les indépendants et freelances à développer leur visibilité en ligne et attirer plus de clients grâce à une stratégie digitale claire et efficace." />
   <meta property="og:image" content="https://lilianconsult.fr/og-image.jpg" />
   <meta property="og:locale" content="fr_FR" />
@@ -71,7 +71,7 @@
       --navy: #0B1D39;
       --navy-light: #122347;
       --navy-dark: #071428;
-      --orange: #FF7A00;
+      --orange: #fab61d;
       --orange-hover: #E66E00;
       --gray-soft: #F5F7FA;
     }
@@ -84,14 +84,14 @@
     @keyframes floatUp    { 0%,100%{transform:translateY(0)}   50%{transform:translateY(-18px)} }
     @keyframes floatDown  { 0%,100%{transform:translateY(-8px)}50%{transform:translateY(10px)}  }
     @keyframes floatSlow  { 0%,100%{transform:translateY(0)}   50%{transform:translateY(-12px)} }
-    @keyframes glow       { 0%,100%{box-shadow:0 0 30px rgba(255,122,0,.3)} 50%{box-shadow:0 0 70px rgba(255,122,0,.6)} }
+    @keyframes glow       { 0%,100%{box-shadow:0 0 30px rgba(250,182,29,.3)} 50%{box-shadow:0 0 70px rgba(250,182,29,.6)} }
     @keyframes pulse2     { 0%,100%{opacity:1} 50%{opacity:.35} }
     @keyframes shimmer    { 0%{background-position:-200% center} 100%{background-position:200% center} }
     @keyframes slideUp    { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
     @keyframes popIn      { 0%{opacity:0;transform:scale(.85)} 70%{transform:scale(1.04)} 100%{opacity:1;transform:scale(1)} }
     @keyframes fadeInBadge{ from{opacity:0;transform:translateY(-8px)} to{opacity:1;transform:translateY(0)} }
     @keyframes rotateSlow { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
-    @keyframes borderPulse{ 0%,100%{border-color:rgba(255,122,0,.3)} 50%{border-color:rgba(255,122,0,.8)} }
+    @keyframes borderPulse{ 0%,100%{border-color:rgba(250,182,29,.3)} 50%{border-color:rgba(250,182,29,.8)} }
 
     .float-up   { animation: floatUp   6s ease-in-out infinite; }
     .float-down { animation: floatDown 7s ease-in-out infinite; }
@@ -101,7 +101,7 @@
 
     /* Shimmer text effect */
     .shimmer-text {
-      background: linear-gradient(90deg, #FF7A00 0%, #FFCC88 40%, #FF7A00 60%, #FFAA55 100%);
+      background: linear-gradient(90deg, #fab61d 0%, #FFCC88 40%, #fab61d 60%, #FFAA55 100%);
       background-size: 200% auto;
       -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
       animation: shimmer 3s linear infinite;
@@ -176,7 +176,7 @@
       content:''; position:absolute; inset:0;
       background:rgba(255,255,255,0); transition:background .3s ease;
     }
-    .btn-p:hover { background:var(--orange-hover); transform:translateY(-2px); box-shadow:0 10px 28px rgba(255,122,0,.38); }
+    .btn-p:hover { background:var(--orange-hover); transform:translateY(-2px); box-shadow:0 10px 28px rgba(250,182,29,.38); }
 
     /* Secondary button (outline on dark) */
     .btn-s {
@@ -198,7 +198,7 @@
 
     /* Gradient text */
     .grad-text {
-      background:linear-gradient(135deg,#FF7A00,#FFAA55);
+      background:linear-gradient(135deg,#fab61d,#FFAA55);
       -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
     }
 
@@ -222,7 +222,7 @@
       outline:none; transition:border-color .2s ease, box-shadow .2s ease;
       font-family:'Inter',sans-serif;
     }
-    .form-input:focus { border-color:var(--orange); box-shadow:0 0 0 3px rgba(255,122,0,.1); }
+    .form-input:focus { border-color:var(--orange); box-shadow:0 0 0 3px rgba(250,182,29,.1); }
     .form-input::placeholder { color:#9CA3AF; }
 
     /* Mobile menu transition */
@@ -239,7 +239,7 @@
     .step-dot {
       width:20px; height:20px; border-radius:50%;
       background:var(--orange); border:3px solid white;
-      box-shadow:0 0 0 3px rgba(255,122,0,.25);
+      box-shadow:0 0 0 3px rgba(250,182,29,.25);
       position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
     }
 
@@ -509,7 +509,7 @@ function HeroDashboard() {
 
           {/* Radial glows */}
           <div style={{ position:'absolute', top:'20%', right:'15%', width:500, height:500, borderRadius:'50%',
-            background:'radial-gradient(circle,rgba(255,122,0,.07) 0%,transparent 70%)', pointerEvents:'none' }} />
+            background:'radial-gradient(circle,rgba(250,182,29,.07) 0%,transparent 70%)', pointerEvents:'none' }} />
           <div style={{ position:'absolute', bottom:'10%', left:'5%', width:380, height:380, borderRadius:'50%',
             background:'radial-gradient(circle,rgba(18,35,71,.9) 0%,transparent 70%)', pointerEvents:'none' }} />
 
@@ -598,7 +598,7 @@ function HeroDashboard() {
                                 {/* Cadre décoratif derrière */}
                 <div className="hero-frame" style={{
                   position:'absolute', top:20, left:20, right:-20, bottom:-20,
-                  borderRadius:24, border:'2px solid rgba(255,122,0,.25)',
+                  borderRadius:24, border:'2px solid rgba(250,182,29,.25)',
                   zIndex:0,
                 }} />
                 {/* Photo */}
@@ -621,7 +621,7 @@ function HeroDashboard() {
                 {/* Badge client */}
                 <div className="pop-in s2" style={{
                 }}>
-                  <div style={{ width:36, height:36, borderRadius:10, background:'rgba(255,122,0,.1)',
+                  <div style={{ width:36, height:36, borderRadius:10, background:'rgba(250,182,29,.1)',
                     display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
                     <svg width="16" height="16" fill="none" stroke="var(--orange)" strokeWidth="2" strokeLinecap="round">
                       <circle cx="8" cy="5" r="3"/><path d="M1 16c0-4 3-6 7-6s7 2 7 6"/>
@@ -692,7 +692,7 @@ function HeroDashboard() {
             {/* Header */}
             <div className={`rv ${seen?'on':''}`} style={{ textAlign:'center', marginBottom:64 }}>
               <div style={{ display:'inline-flex', alignItems:'center', gap:8, padding:'7px 18px',
-                borderRadius:99, background:'#FFF4EC', border:'1px solid rgba(255,122,0,.22)', marginBottom:20 }}>
+                borderRadius:99, background:'#FFF4EC', border:'1px solid rgba(250,182,29,.22)', marginBottom:20 }}>
                 <span style={{ fontSize:'.78rem', fontWeight:700, color:'var(--orange)' }}>Le vrai problème</span>
               </div>
               <h2 style={{ fontSize:'clamp(2rem,5vw,3rem)', fontWeight:900, color:'var(--navy)',
@@ -708,7 +708,7 @@ function HeroDashboard() {
                   style={{ padding:'36px 32px', borderRadius:20,
                     background:'var(--gray-soft)', border:'1px solid rgba(11,29,57,.06)' }}>
                   <div style={{ width:56, height:56, borderRadius:16,
-                    background:'rgba(255,122,0,.08)', color:'var(--orange)',
+                    background:'rgba(250,182,29,.08)', color:'var(--orange)',
                     display:'flex', alignItems:'center', justifyContent:'center', marginBottom:22 }}>
                     {c.icon}
                   </div>
@@ -837,7 +837,7 @@ function HeroDashboard() {
                         transition:'background .3s ease, border-color .3s ease, transform .3s ease',
                         transform: hovered===i ? 'scale(1.25)' : 'scale(1)',
                         display:'flex', alignItems:'center', justifyContent:'center',
-                        boxShadow: (hovered===i || litBubbles.includes(i)) ? '0 0 0 6px rgba(255,122,0,.2)' : 'none',
+                        boxShadow: (hovered===i || litBubbles.includes(i)) ? '0 0 0 6px rgba(250,182,29,.2)' : 'none',
                       }}>
                       <div style={{ width:8, height:8, borderRadius:'50%',
                         background: (hovered===i || litBubbles.includes(i)) ? '#fff' : 'rgba(255,255,255,.5)' }} />
@@ -880,10 +880,10 @@ function HeroDashboard() {
                   <div style={{ display:'flex', flexDirection:'column', alignItems:'center', flexShrink:0 }}>
                     <div style={{ width:28, height:28, borderRadius:'50%', flexShrink:0,
                       background: mobileLitCards.includes(i) ? 'var(--orange)' : 'rgba(255,255,255,.15)',
-                      border: `3px solid ${mobileLitCards.includes(i) ? 'rgba(255,122,0,.4)' : 'rgba(255,255,255,.25)'}`,
+                      border: `3px solid ${mobileLitCards.includes(i) ? 'rgba(250,182,29,.4)' : 'rgba(255,255,255,.25)'}`,
                       display:'flex', alignItems:'center', justifyContent:'center',
                       transition:'background .5s ease, border-color .5s ease, box-shadow .5s ease',
-                      boxShadow: mobileLitCards.includes(i) ? '0 0 0 6px rgba(255,122,0,.2)' : 'none' }}>
+                      boxShadow: mobileLitCards.includes(i) ? '0 0 0 6px rgba(250,182,29,.2)' : 'none' }}>
                       <div style={{ width:8, height:8, borderRadius:'50%',
                         background: mobileLitCards.includes(i) ? '#fff' : 'rgba(255,255,255,.4)',
                         transition:'background .5s ease' }} />
@@ -984,7 +984,7 @@ function HeroDashboard() {
 
             <div className={`rv ${seen?'on':''}`} style={{ textAlign:'center', marginBottom:72 }}>
               <div style={{ display:'inline-flex', alignItems:'center', gap:8, padding:'7px 18px',
-                borderRadius:99, background:'#FFF4EC', border:'1px solid rgba(255,122,0,.22)', marginBottom:20 }}>
+                borderRadius:99, background:'#FFF4EC', border:'1px solid rgba(250,182,29,.22)', marginBottom:20 }}>
                 <span style={{ fontSize:'.78rem', fontWeight:700, color:'var(--orange)' }}>Mes offres</span>
               </div>
               {/* VerticalCutReveal — mot par mot depuis le bas */}
@@ -1034,7 +1034,7 @@ function HeroDashboard() {
                     {s.items.map((item,j) => (
                       <li key={j} style={{ display:'flex', alignItems:'flex-start', gap:12 }}>
                         <div style={{ width:20, height:20, borderRadius:'50%', flexShrink:0, marginTop:1,
-                          background: s.feat?'rgba(255,122,0,.18)':'rgba(255,122,0,.1)',
+                          background: s.feat?'rgba(250,182,29,.18)':'rgba(250,182,29,.1)',
                           display:'flex', alignItems:'center', justifyContent:'center' }}>
                           <svg width="10" height="10" fill="none" stroke="var(--orange)" strokeWidth="3" strokeLinecap="round">
                             <path d="M2 5l3 3 5-5"/>
@@ -1082,7 +1082,7 @@ function HeroDashboard() {
             {/* Left */}
             <div className={`rl ${seen?'on':''}`}>
               <div style={{ display:'inline-flex', alignItems:'center', gap:8, padding:'7px 18px',
-                borderRadius:99, background:'rgba(255,122,0,.1)', border:'1px solid rgba(255,122,0,.22)', marginBottom:28 }}>
+                borderRadius:99, background:'rgba(250,182,29,.1)', border:'1px solid rgba(250,182,29,.22)', marginBottom:28 }}>
                 <span style={{ fontSize:'.78rem', fontWeight:700, color:'var(--orange)' }}>À propos</span>
               </div>
 
@@ -1172,7 +1172,7 @@ Chaque action doit avoir un objectif précis : gagner en visibilité, renforcer 
             {/* Header */}
             <div className={`rv ${seen?'on':''}`} style={{ textAlign:'center', marginBottom:64 }}>
               <div style={{ display:'inline-flex', alignItems:'center', gap:8, padding:'7px 18px',
-                borderRadius:99, background:'rgba(255,122,0,.12)', border:'1px solid rgba(255,122,0,.25)', marginBottom:20 }}>
+                borderRadius:99, background:'rgba(250,182,29,.12)', border:'1px solid rgba(250,182,29,.25)', marginBottom:20 }}>
                 <span style={{ fontSize:'.78rem', fontWeight:700, color:'var(--orange)' }}>Témoignages</span>
               </div>
               <h2 style={{ fontSize:'clamp(2rem,5vw,3rem)', fontWeight:900, color:'#fff',
@@ -1207,7 +1207,7 @@ Chaque action doit avoir un objectif précis : gagner en visibilité, renforcer 
                   <div style={{ position:'absolute', bottom:0, left:0, right:0, padding:'32px 28px' }}>
 
                     {/* Quote icon */}
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="rgba(255,122,0,.5)"
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="rgba(250,182,29,.5)"
                       style={{ marginBottom:14, display:'block' }}>
                       <path d="M11.192 15.757c0-.88-.23-1.618-.69-2.217-.326-.412-.768-.683-1.327-.812-.55-.128-1.07-.137-1.54-.028-.16-.95.1-1.956.76-3.022.66-1.065 1.515-1.867 2.558-2.403L9.373 5c-.8.396-1.56.898-2.26 1.505-.71.607-1.34 1.305-1.9 2.094s-.98 1.68-1.25 2.69-.346 2.04-.217 3.1c.168 1.4.62 2.52 1.356 3.35.735.84 1.652 1.26 2.748 1.26.965 0 1.766-.29 2.4-.878.628-.576.94-1.365.94-2.364zm9.124 0c0-.88-.23-1.618-.69-2.217-.326-.42-.77-.692-1.327-.817-.56-.124-1.074-.13-1.54-.022-.16-.94.09-1.95.75-3.02.66-1.06 1.514-1.86 2.557-2.4L18.49 5c-.8.396-1.555.898-2.26 1.505-.708.607-1.34 1.305-1.894 2.094-.556.79-.97 1.68-1.24 2.69-.273 1-.345 2.04-.217 3.1.168 1.4.62 2.52 1.356 3.35.735.84 1.652 1.26 2.748 1.26.965 0 1.766-.29 2.4-.878.628-.576.94-1.365.94-2.364z"/>
                     </svg>
@@ -1219,7 +1219,7 @@ Chaque action doit avoir un objectif précis : gagner en visibilité, renforcer 
                     </p>
 
                     {/* Separator */}
-                    <div style={{ height:1, background:'rgba(255,122,0,.3)', marginBottom:16 }} />
+                    <div style={{ height:1, background:'rgba(250,182,29,.3)', marginBottom:16 }} />
 
                     {/* Author */}
                     <div>
@@ -1247,9 +1247,9 @@ Chaque action doit avoir un objectif précis : gagner en visibilité, renforcer 
         <section style={{ padding:'100px 0', background:'var(--navy)', position:'relative', overflow:'hidden' }} ref={ref}>
           {/* Orbs */}
           <div style={{ position:'absolute', top:'-10%', left:'20%', width:400, height:400, borderRadius:'50%', pointerEvents:'none',
-            background:'radial-gradient(circle,rgba(255,122,0,.06) 0%,transparent 70%)' }} />
+            background:'radial-gradient(circle,rgba(250,182,29,.06) 0%,transparent 70%)' }} />
           <div style={{ position:'absolute', bottom:'-15%', right:'15%', width:500, height:500, borderRadius:'50%', pointerEvents:'none',
-            background:'radial-gradient(circle,rgba(255,122,0,.04) 0%,transparent 70%)' }} />
+            background:'radial-gradient(circle,rgba(250,182,29,.04) 0%,transparent 70%)' }} />
 
           {/* Decorative lines */}
           <div style={{ position:'absolute', inset:0, pointerEvents:'none',
@@ -1319,7 +1319,7 @@ Chaque action doit avoir un objectif précis : gagner en visibilité, renforcer 
             {/* Left */}
             <div className={`rl ${seen?'on':''}`}>
               <div style={{ display:'inline-flex', alignItems:'center', gap:8, padding:'7px 18px',
-                borderRadius:99, background:'#FFF4EC', border:'1px solid rgba(255,122,0,.22)', marginBottom:28 }}>
+                borderRadius:99, background:'#FFF4EC', border:'1px solid rgba(250,182,29,.22)', marginBottom:28 }}>
                 <span style={{ fontSize:'.78rem', fontWeight:700, color:'var(--orange)' }}>Contact</span>
               </div>
 
@@ -1376,7 +1376,7 @@ Chaque action doit avoir un objectif précis : gagner en visibilité, renforcer 
                 {sent ? (
                   <div style={{ textAlign:'center', padding:'48px 0' }}>
                     <div style={{ width:64, height:64, borderRadius:'50%',
-                      background:'rgba(255,122,0,.1)', margin:'0 auto 18px',
+                      background:'rgba(250,182,29,.1)', margin:'0 auto 18px',
                       display:'flex', alignItems:'center', justifyContent:'center' }}>
                       <svg width="28" height="28" fill="none" stroke="var(--orange)" strokeWidth="2.5" strokeLinecap="round">
                         <path d="M5 14l5 5L20 7"/>
