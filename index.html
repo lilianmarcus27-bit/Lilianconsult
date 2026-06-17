@@ -253,6 +253,20 @@
 </head>
 <body>
   <div id="root"></div>
+  <div id="error-display" style="display:none;position:fixed;top:0;left:0;right:0;background:red;color:white;padding:20px;z-index:99999;font-family:monospace;font-size:14px;white-space:pre-wrap;"></div>
+
+  <script>
+    window.onerror = function(msg, src, line, col, err) {
+      var d = document.getElementById('error-display');
+      d.style.display = 'block';
+      d.textContent = 'ERREUR ligne ' + line + ':\n' + msg + '\n' + (err && err.stack ? err.stack : '');
+    };
+    window.onunhandledrejection = function(e) {
+      var d = document.getElementById('error-display');
+      d.style.display = 'block';
+      d.textContent = 'PROMISE ERROR:\n' + e.reason;
+    };
+  </script>
 
   <script type="text/babel">
     const { useState, useEffect, useRef } = React;
