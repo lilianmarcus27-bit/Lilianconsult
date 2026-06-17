@@ -3,14 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lilian Nelsom - Consultant en communication</title>
+  <title>Lilian Nelsom — Consultant Marketing Digital pour Indépendants & Freelances</title>
   <meta name="description" content="Consultant marketing digital basé en France. J'aide les indépendants, freelances et petites entreprises à développer leur visibilité en ligne et attirer plus de clients grâce à une stratégie digitale sur mesure." />
   <meta name="keywords" content="consultant marketing digital, stratégie digitale freelance, visibilité en ligne indépendants, marketing digital TPE, consultant communication digitale, Lilian Nelsom" />
   <meta name="author" content="Lilian Nelsom" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://lilianconsult.fr/" />
-  <link rel="icon" type="image/png" href="favicon.png" />
-  <link rel="apple-touch-icon" href="favicon.png" />
 
   <!-- Open Graph (LinkedIn, Facebook, WhatsApp) -->
   <meta property="og:type" content="website" />
@@ -1446,9 +1444,6 @@ Chaque action doit avoir un objectif précis : gagner en visibilité, renforcer 
         return () => { document.body.style.overflow = ''; window.removeEventListener('keydown', handleKey); };
       }, []);
 
-      const sh3 = { fontSize:'1rem', fontWeight:800, color:'var(--navy)', marginTop:24, marginBottom:8 };
-      const sp   = { fontSize:'.9rem', color:'#4B5563', lineHeight:1.75, margin:0 };
-
       const mentions = (
         <div>
           <h2 style={{ fontSize:'1.4rem', fontWeight:900, color:'var(--navy)', marginBottom:24 }}>Mentions légales</h2>
@@ -1514,6 +1509,9 @@ Chaque action doit avoir un objectif précis : gagner en visibilité, renforcer 
           <p style={sp}>Si vous estimez que vos droits ne sont pas respectés, vous pouvez adresser une réclamation à la <a href="https://www.cnil.fr" target="_blank" rel="noopener noreferrer" style={{ color:'var(--orange)' }}>CNIL</a>.</p>
         </div>
       );
+
+      const sh3 = { fontSize:'1rem', fontWeight:800, color:'var(--navy)', marginTop:24, marginBottom:8 };
+      const sp   = { fontSize:'.9rem', color:'#4B5563', lineHeight:1.75, margin:0 };
 
       return (
         <div onClick={onClose} style={{ position:'fixed', inset:0, background:'rgba(11,29,57,.7)',
